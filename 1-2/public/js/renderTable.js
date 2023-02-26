@@ -26,7 +26,7 @@ function renderTable() {
           newCell.textContent = product[key];
         }
       });
-      //assign onclick funtion for each row (row 2 -...) for rendering modal
+      //assign onclick function for each row (row 2 -...) for rendering modal
       for (let i = 1; i < table.rows.length; i++) {
         table.rows[i].onclick = function () {
           getProductData(this);

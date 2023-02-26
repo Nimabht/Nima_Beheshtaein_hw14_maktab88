@@ -2,18 +2,18 @@
   {
     "id": 1,
     "title": "iPhone 9",
-    "price": 549,
-    "rating": 4.69,
-    "stock": 94,
+    "price": "549",
+    "rating": "4.69",
+    "stock": "94",
     "brand": "Apple",
     "category": "smartphones"
   },
   {
     "id": 2,
     "title": "iPhone X",
-    "price": 899,
-    "rating": 4.44,
-    "stock": 34,
+    "price": "899",
+    "rating": "4.44",
+    "stock": "34",
     "brand": "Apple",
     "category": "smartphones"
   },
@@ -268,23 +268,5 @@
     "stock": 54,
     "brand": "Golden",
     "category": "home-decoration"
-  },
-  {
-    "id": 123,
-    "title": "sad",
-    "price": 11,
-    "rating": 12,
-    "stock": 213,
-    "brand": "Nima",
-    "category": "Tele"
-  },
-  {
-    "id": 12344,
-    "title": "ttttt",
-    "price": 1,
-    "rating": 1,
-    "stock": 1,
-    "brand": "1ttttt",
-    "category": "tttttt"
   }
 ]

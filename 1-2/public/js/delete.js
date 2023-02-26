@@ -1,14 +1,11 @@
 //delete user function
 function deleteProduct() {
-  let id = selectedProduct.id;
+  const id = $("form").children()[0].children[1].value;
   $.ajax({
     type: "DELETE",
-    url: `/product/removeProduct/${id}`,
+    url: `/product/remove-product/${id}`,
     success(_data) {
-      renderTable();
-      modal.style.display = "none";
-      modal.parentElement.style.display = "none";
-      location.reload();
+      window.location.href = "http://localhost:1010/products-page";
     },
     error(err) {
       console.log(err);

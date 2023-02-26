@@ -38,8 +38,14 @@ body
             button(type='button', class='btn btn-primary',onclick="cancel()") Cancel
         else
             button(type='submit', class='btn btn-primary mr-2') Update
-            button(type='button', class='btn btn-primary mr-2') Delete
+            button(type='button', class='btn btn-primary mr-2',onclick="deleteProduct()") Delete
             button(type='button', class='btn btn-primary mr-2',onclick="cancel()") Cancel
-    script(src="/js/cancelBtn.js") 
+    script(src="/js/cancel.js")
+    script(src="https://code.jquery.com/jquery-3.6.3.min.js"
+  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+  crossorigin="anonymous") 
+    if method==="PUT"
+        script(src="/js/update.js")
+        script(src="/js/delete.js")  
 
 
