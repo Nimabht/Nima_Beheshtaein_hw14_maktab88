@@ -1,4 +1,5 @@
 const express = require("express");
+const _ = require("lodash");
 const router = express.Router();
 const fs = require("fs");
 const Jud = require("json-update-data");
@@ -33,6 +34,13 @@ router.post("/create-product", (req, res) => {
       .status(400)
       .render("sendMessage", { title: "Failure", message: error.details[0].message });
 
+  const isDuplicateId = _.some(products, ["id", +req.body.id]);
+  if (!!isDuplicateId) {
+    return res.status(400).render("sendMessage", {
+      title: "Failure",
+      message: "User with given id already exists",
+    });
+  }
   const newProduct = {
     id: +req.body.id,
     title: req.body.title,
