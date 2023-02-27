@@ -5,6 +5,7 @@ const notFoundHandler = require("./middlewares/notFoundHandler");
 const productRouter = require("./routers/product");
 const app = express();
 
+app.set("view engine", "pug");
 app.set("views", "./views");
 
 app.use(express.json());

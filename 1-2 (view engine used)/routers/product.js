@@ -6,7 +6,6 @@ const Jud = require("json-update-data");
 const Joi = require("joi");
 const path = require("path");
 const products = require("../db/products-data.json");
-const generators = require("../tools/htmlGenerators");
 
 //read all products
 router.get("/get-all-products", (_req, res) => {
@@ -18,14 +17,11 @@ router.get("/get-product/:id", (req, res) => {
   const productId = req.params.id;
   const product = products.find((product) => product.id == productId);
 
-  if (!product) {
-    const html = generators.messageHtmlGenerator({
+  if (!product)
+    return res.status(404).render("sendMessage", {
       title: "Product Not Found",
-      message:
-        "The Product you are looking for could not be found :(",
+      message: "The Product you are looking for could not be found :(",
     });
-    return res.status(404).send(html);
-  }
 
   res.json(product);
 });
@@ -33,21 +29,17 @@ router.get("/get-product/:id", (req, res) => {
 //Create a new product
 router.post("/create-product", (req, res) => {
   const { error } = validateProduct(req.body, "POST");
-  if (!!error) {
-    const html = generators.messageHtmlGenerator({
-      title: "Failure",
-      message: error.details[0].message,
-    });
-    return res.status(400).send(html);
-  }
+  if (!!error)
+    return res
+      .status(400)
+      .render("sendMessage", { title: "Failure", message: error.details[0].message });
 
   const isDuplicateId = _.some(products, ["id", +req.body.id]);
   if (!!isDuplicateId) {
-    const html = generators.messageHtmlGenerator({
+    return res.status(400).render("sendMessage", {
       title: "Failure",
       message: "User with given id already exists",
     });
-    return res.status(400).send(html);
   }
   const newProduct = {
     id: +req.body.id,
@@ -60,44 +52,31 @@ router.post("/create-product", (req, res) => {
   };
   products.push(newProduct);
   try {
-    Jud.pushData(
-      path.join(__dirname, "../db/products-data.json"),
-      newProduct
-    );
-    res.redirect("/products-page");
+    Jud.pushData(path.join(__dirname, "../db/products-data.json"), newProduct);
   } catch (err) {
     console.log(err);
-    const html = generators.messageHtmlGenerator({
-      title: "Oh Oh",
-      message: "Something is wrong!!!",
-    });
-    return res.status(500).send(html);
+    return res
+      .status(500)
+      .render("sendMessage", { title: "Oh Oh", message: "Something is wrong!!!" });
   }
+  res.redirect("/products-page");
 });
 
 //Update a product
 router.put("/update-product/:id", (req, res) => {
   const { error } = validateProduct(req.body, "PUT");
-  if (!!error) {
-    const html = generators.messageHtmlGenerator({
-      title: "Failure",
-      message: error.details[0].message,
-    });
-    return res.status(400).send(html);
-  }
+  if (!!error)
+    return res
+      .status(400)
+      .render("sendMessage", { title: "Failure", message: error.details[0].message });
 
   const productId = req.params.id;
   const product = products.find((product) => product.id == productId);
-  if (!product) {
-    {
-      const html = generators.messageHtmlGenerator({
-        title: "Product Not Found",
-        message:
-          "The Product you are looking for could not be found :(",
-      });
-      return res.status(404).send(html);
-    }
-  }
+  if (!product)
+    return res.status(404).render("sendMessage", {
+      title: "Product Not Found",
+      message: "The Product you are looking for could not be found :(",
+    });
 
   const { title, price, rating, stock, brand, category } = req.body;
   if (title) product.title = title;
@@ -107,48 +86,35 @@ router.put("/update-product/:id", (req, res) => {
   if (brand) product.brand = brand;
   if (category) product.category = category;
   try {
-    Jud.writeData(
-      path.join(__dirname, "../db/products-data.json"),
-      products
-    );
-    res.json(product);
+    Jud.writeData(path.join(__dirname, "../db/products-data.json"), products);
   } catch (err) {
     console.log(err);
-    const html = generators.messageHtmlGenerator({
-      title: "Oh Oh",
-      message: "Something is wrong!!!",
-    });
-    return res.status(500).send(html);
+    return res
+      .status(500)
+      .render("sendMessage", { title: "Oh Oh", message: "Something is wrong!!!" });
   }
+
+  res.json(product);
 });
 
 //Remove a product
 router.delete("/remove-product/:id", (req, res) => {
   const productId = req.params.id;
   const product = products.find((product) => product.id == productId);
-  if (!product) {
-    const html = generators.messageHtmlGenerator({
+  if (!product)
+    return res.status(404).render("sendMessage", {
       title: "Product Not Found",
-      message:
-        "The Product you are looking for could not be found :(",
+      message: "The Product you are looking for could not be found :(",
     });
-    return res.status(404).send(html);
-  }
   try {
-    Jud.deleteData(
-      path.join(__dirname, "../db/products-data.json"),
-      "id",
-      +productId
-    );
-    res.json(product);
+    Jud.deleteData(path.join(__dirname, "../db/products-data.json"), "id", +productId);
   } catch (err) {
     console.log(err.message);
-    const html = generators.messageHtmlGenerator({
-      title: "Oh Oh",
-      message: "Something is wrong!!!",
-    });
-    return res.status(500).send(html);
+    return res
+      .status(500)
+      .render("sendMessage", { title: "Oh Oh", message: "Something is wrong!!!" });
   }
+  res.json(product);
 });
 
 function validateProduct(product, method) {
@@ -187,7 +153,7 @@ function validateProduct(product, method) {
 */
 
 router.get("/new", (_req, res) => {
-  const html = generators.postHtmlGenerator({
+  res.render("productPug", {
     method: "POST",
     action: "/product/create-product",
     id: "",
@@ -198,13 +164,12 @@ router.get("/new", (_req, res) => {
     brand: "",
     category: "",
   });
-  res.send(html);
 });
 
 router.get("/:id/edit", (req, res) => {
   const productId = req.params.id;
   const product = products.find((product) => product.id == productId);
-  const html = generators.putHtmlGenerator({
+  res.render("productPug", {
     method: "PUT",
     action: `/product/update-product/${productId}`,
     id: product.id,
@@ -215,7 +180,6 @@ router.get("/:id/edit", (req, res) => {
     brand: product.brand,
     category: product.category,
   });
-  res.send(html);
 });
 
 module.exports = router;

@@ -22,8 +22,7 @@ function renderTable() {
         let newCell = table.rows[table.rows.length - 1].insertCell();
         newCell.textContent = indexOfProduct + 1;
         for (const key in product) {
-          let newCell =
-            table.rows[table.rows.length - 1].insertCell();
+          let newCell = table.rows[table.rows.length - 1].insertCell();
           newCell.textContent = product[key];
         }
       });
