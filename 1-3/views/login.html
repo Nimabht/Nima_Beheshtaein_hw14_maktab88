@@ -6,7 +6,75 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/polipop/dist/css/polipop.core.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/polipop/dist/css/polipop.default.min.css" />
     <title>Login Form</title>
   </head>
-  <body></body>
+  <body>
+    <div class="loginSection">
+      <form class="loginForm">
+        <h2>Login</h2>
+        <ul class="noBullet">
+          <li>
+            <label for="username"></label>
+            <input
+              type="text"
+              class="inputFields"
+              id="username"
+              name="username"
+              placeholder="Fristname" />
+          </li>
+          <li>
+            <label for="Password"></label>
+            <input
+              type="text"
+              class="inputFields"
+              id="Password"
+              name="Password"
+              placeholder="Password" />
+          </li>
+          <li id="center-btn">
+            <input
+              type="submit"
+              id="loginBtn"
+              class="join-btn"
+              name="join"
+              alt="Join"
+              value="Login" />
+          </li>
+        </ul>
+        <a class="link">Forgot password?</a>
+        <a class="link">Sign in with Company or School</a>
+        <div class="line">
+          <span>Or</span>
+        </div>
+        <li>
+          <input
+            onclick="redirectToSignup()"
+            type="submit"
+            id="createBtn"
+            class="join-btn"
+            name="join"
+            alt="Join"
+            value="Create new account" />
+        </li>
+      </form>
+    </div>
+    <div class="levitate">
+      <header>Let's create the future <b>together</b></header>
+      <button>Start a FREE 10-days trial</button>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/polipop/dist/polipop.min.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/redirect.js"></script>
+  </body>
 </html>

@@ -10,21 +10,19 @@ let polipop = new Polipop("signupSection", {
 $("form").on("submit", function (e) {
   e.preventDefault();
   const user = {
-    firstname: $(".noBullet").children()[0].children[1].value,
-    lastname: $(".noBullet").children()[1].children[1].value,
-    password: $(".noBullet").children()[2].children[1].value,
-    username: $(".noBullet").children()[3].children[1].value,
-    genre: $(".noBullet").children()[4].children[1].value,
+    username: $(".noBullet").children()[0].children[1].value,
+    password: $(".noBullet").children()[1].children[1].value,
   };
   $.ajax({
     type: "POST",
-    url: "/auth/signup",
+    url: "/auth/login/authenticate",
     data: user,
     success: (result) => {
+      console.log(result);
       polipop.add({
         type: "success",
         title: "Success",
-        content: result,
+        content: `Welcome ${result.user.firstname} :)`,
       });
       console.log(result);
     },

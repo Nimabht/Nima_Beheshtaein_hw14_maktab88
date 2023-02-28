@@ -10,8 +10,8 @@ router.get("/signup", (req, res) => {
   res.sendFile(path.join(__dirname, "../views/signup.html"));
 });
 router.post("/signup", (req, res) => {
-  console.log(req.body);
   const { error } = validateUser(req.body);
+  console.log(error);
   if (!!error) {
     console.log(error.details[0].message);
     return res.status(400).send(error.details[0].message);
@@ -48,13 +48,48 @@ router.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "../views/login.html"));
 });
 
+router.post("/login/authenticate", (req, res) => {
+  const { username, password } = req.body;
+  const user = users.find(
+    (user) => user.username === username && user.password === password
+  );
+  if (!user) return res.status(401).send("Invalid inputs!");
+  res.json({ user });
+});
+
 function validateUser(user) {
   const schema = Joi.object({
-    firstname: Joi.string().min(4).required(),
-    lastname: Joi.string().min(4).required(),
-    password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{8,30}$")),
-    username: Joi.string().alphanum().min(4).max(30).required(),
-    genre: Joi.string().required(),
+    firstname: Joi.string().min(4).required().messages({
+      "string.min": "First name must be at least 4 characters long",
+      "any.required": "First name is required",
+    }),
+    lastname: Joi.string().min(4).required().messages({
+      "string.min": "Last name must be at least 4 characters long",
+      "any.required": "Last name is required",
+    }),
+    //FIXME: doesn't validate password
+    password: Joi.string()
+      .pattern(/^[a-zA-Z0-9]{8,30}$/)
+      .messages({
+        "string.pattern.base":
+          "Password is invalid (8 to 30 characters, containt : upper and lower characters and number) ",
+      }),
+    username: Joi.string()
+      .alphanum()
+      .min(4)
+      .max(30)
+      .required()
+      .messages({
+        "string.base": "Username must be a string",
+        "string.alphanum":
+          "Username must only contain alpha-numeric characters",
+        "string.min": "Username must be at least 4 characters long",
+        "string.max": "Username cannot be longer than 30 characters",
+        "any.required": "Username is required",
+      }),
+    genre: Joi.string().required().messages({
+      "any.required": "genre is required",
+    }),
   });
   return schema.validate(user);
 }

@@ -21,9 +21,9 @@
   <body>
     <div class="signupSection">
       <div class="info">
-        <h2>Mission to Deep Space</h2>
+        <h2>The Future Is Here</h2>
         <i class="fa-solid fa-meteor"></i>
-        <p>The Future Is Here</p>
+        <p onclick="redirectToLogin()">Already have an account?</p>
       </div>
       <form class="signupForm" name="signupform">
         <h2>Sign Up</h2>
@@ -35,8 +35,7 @@
               class="inputFields"
               id="firstname"
               name="firstname"
-              placeholder="Fristname"
-              required />
+              placeholder="Fristname" />
           </li>
           <li>
             <label for="lastname"></label>
@@ -45,8 +44,7 @@
               class="inputFields"
               id="lastname"
               name="lastname"
-              placeholder="Lastname"
-              required />
+              placeholder="Lastname" />
           </li>
           <li>
             <label for="password"></label>
@@ -55,8 +53,7 @@
               class="inputFields"
               id="password"
               name="password"
-              placeholder="Password"
-              required />
+              placeholder="Password" />
           </li>
           <li>
             <label for="username"></label>
@@ -65,8 +62,7 @@
               class="inputFields"
               id="username"
               name="username"
-              placeholder="Username"
-              required />
+              placeholder="Username" />
           </li>
           <li>
             <label for="genre"></label>
@@ -93,5 +89,6 @@
       crossorigin="anonymous"></script>
     <script src="https://unpkg.com/polipop/dist/polipop.min.js"></script>
     <script src="/js/signup.js"></script>
+    <script src="/js/redirect.js"></script>
   </body>
 </html>

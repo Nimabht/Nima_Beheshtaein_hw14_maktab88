@@ -1,0 +1,137 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
+* {
+  font-family: "Open Sans", sans-serif;
+}
+li {
+  list-style: none;
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-image: url("/images/signupBackground.webp");
+}
+.loginSection {
+  background: url(https://source.unsplash.com/TV2gg2kZD1o/1600x800);
+  background-repeat: no-repeat;
+  position: absolute;
+  background-size: cover;
+  top: 50%;
+  left: 17%;
+  transform: translate(-50%, -50%);
+  width: 601px;
+  background-position-x: 0rem;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  color: white;
+  box-shadow: 3px 10px 20px 5px rgb(0 0 0 / 50%);
+}
+.loginForm {
+  width: 100%;
+  padding: 30px 0;
+  background: rgba(20, 40, 40, 0.8);
+  transition: 0.2s;
+}
+.loginForm h2 {
+  font-weight: 300;
+  margin: 0;
+  font-size: 3rem;
+}
+.noBullet {
+  list-style-type: none;
+  padding: 0;
+  margin: 5rem 0 3rem 0;
+}
+.inputFields {
+  margin: 15px 0;
+  font-size: 16px;
+  padding: 15px;
+  width: 350px;
+  border: 1px solid #0ab4b4;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: rgba(20, 20, 20, 0.2);
+  color: white;
+  outline: none;
+}
+
+.join-btn {
+  border: 1px solid #0ab4b4;
+  background: rgba(20, 20, 20, 0.6);
+  font-size: 18px;
+  color: white;
+  margin-top: 20px;
+  padding: 10px 50px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.join-btn:hover {
+  background: rgba(20, 20, 20, 0.8);
+  padding: 10px 80px;
+}
+.link {
+  display: block;
+  cursor: pointer;
+  margin: 12px 0;
+  transition: all 0.2s;
+}
+.link:hover {
+  color: antiquewhite;
+  transform: scale(1.2);
+}
+.line {
+  padding: 1rem 3rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.line:before,
+.line:after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid white;
+}
+
+.line span {
+  padding: 0 10px;
+}
+.levitate {
+  height: 15rem;
+  width: 45rem;
+  background-color: #000000d1;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 67%;
+  transform: translate(-50%, -50%);
+  border: 2px solid whitesmoke;
+  box-shadow: black 0px 0px 38px 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.levitate header {
+  color: whitesmoke;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.levitate button {
+  border: 2px solid;
+  background-color: #ffffff00;
+  font-size: 2rem;
+  color: whitesmoke;
+  padding: 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.levitate button:hover {
+  color: #111414;
+  background-color: whitesmoke;
+}
