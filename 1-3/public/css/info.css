@@ -1,0 +1,15 @@
+body {
+  background: rgb(102, 44, 129);
+  background: linear-gradient(
+    38deg,
+    rgba(102, 44, 129, 1) 0%,
+    rgba(212, 71, 255, 1) 100%
+  );
+}
+img {
+  width: 20rem;
+}
+.card {
+  width: 20rem;
+  overflow: hidden;
+}

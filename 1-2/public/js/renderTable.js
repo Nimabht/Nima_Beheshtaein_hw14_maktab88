@@ -10,11 +10,11 @@ function renderTable() {
           <th scope="col">No</th>
           <th id="id" scope="col">ID</th>
           <th id="name" scope="col">Title</th>
-          <th id="date" scope="col">Price</th>
-          <th id="date" scope="col">Rating</th>
-          <th id="date" scope="col">Stock</th>
-          <th id="date" scope="col">Brand</th>
-          <th id="date" scope="col">Category</th>
+          <th id="price" scope="col">Price</th>
+          <th id="rating" scope="col">Rating</th>
+          <th id="stock" scope="col">Stock</th>
+          <th id="brand" scope="col">Brand</th>
+          <th id="category" scope="col">Category</th>
         </tr>`;
       //create rows
       productData.forEach((product, indexOfProduct) => {

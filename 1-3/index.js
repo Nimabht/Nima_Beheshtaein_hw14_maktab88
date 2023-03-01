@@ -3,6 +3,8 @@ const path = require("path");
 const Joi = require("joi");
 const notFoundHandler = require("./middlewares/notFoundHandler");
 const authRouter = require("./routers/auth");
+const adminRouter = require("./routers/admin");
+
 const app = express();
 
 app.set("views", "./views");
@@ -10,6 +12,7 @@ app.set("views", "./views");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/auth", authRouter);
+app.use("/admin", adminRouter);
 app.use(express.static("public"));
 app.use(notFoundHandler);
 

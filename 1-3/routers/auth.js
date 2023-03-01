@@ -48,7 +48,7 @@ router.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "../views/login.html"));
 });
 
-router.post("/login/authenticate", (req, res) => {
+router.post("/login", (req, res) => {
   const { username, password } = req.body;
   const user = users.find(
     (user) => user.username === username && user.password === password

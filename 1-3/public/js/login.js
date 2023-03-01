@@ -15,7 +15,7 @@ $("form").on("submit", function (e) {
   };
   $.ajax({
     type: "POST",
-    url: "/auth/login/authenticate",
+    url: "/auth/login",
     data: user,
     success: (result) => {
       console.log(result);

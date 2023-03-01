@@ -37,19 +37,7 @@ body {
   padding: 1rem;
   font-size: 1.5rem;
 }
-#modal {
-  background-color: rgb(230, 255, 255);
-  width: 640px;
-  margin: 4rem auto;
-  padding: 1rem;
-  border: 1px black solid;
-  border-radius: 5px;
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-around;
-}
+
 tr {
   cursor: pointer;
   transition: 0.2s;
@@ -66,12 +54,7 @@ tr:hover:not(:first-of-type) {
   background-color: antiquewhite !important;
   color: black !important;
 }
-.modal-wrapper {
-  background-color: rgba(0, 0, 0, 0.652);
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-}
+
 .button-wrapper {
   display: flex;
   width: 34%;

@@ -1,5 +1,5 @@
 //Selected user variable
-let selectedProduct;
+let selectedUser;
 //DOM part
 let table = document.querySelector("#table");
 //First table render
